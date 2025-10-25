@@ -2,9 +2,9 @@ import java.sql.SQLOutput;
 
 public class Main2 {
     public static void main(String[] args) {
+        Transformations trans = new Transformations();
         //ROTAÇÃO 2D
         System.out.println("ROTAÇÃO 2D");
-        Transformations trans = new Transformations();
         double[][] vector = {{1}, {2}};
         double angleInRadians = Math.toRadians(90);
         double[][] result = trans.Rotation2D(vector, angleInRadians);
@@ -15,7 +15,6 @@ public class Main2 {
 
         //ROTAÇÃO 3DX
         System.out.println("ROTAÇÃO 3DX");
-        Transformations transs = new Transformations();
         double[][] vector2 = {{1}, {2}, {3}};
         double angleInRadians2 = Math.toRadians(90);
         double[][] result2 = trans.Rotation3DX(vector2, angleInRadians2);
@@ -26,7 +25,6 @@ public class Main2 {
         //ROTAÇÃO 3DY
 
         System.out.println("ROTAÇÃO 3DY");
-        Transformations transss = new Transformations();
         double[][] vector3 = {{1}, {2}, {3}};
         double angleInRadians3 = Math.toRadians(90);
         double[][] result3 = trans.Rotation3DY(vector3, angleInRadians3);
@@ -36,12 +34,21 @@ public class Main2 {
 
         //ROTAÇÃO 3DZ
         System.out.println("ROTAÇÃO 3DZ");
-        Transformations transsss = new Transformations();
         double[][] vector4 = {{1}, {2}, {3}};
         double angleInRadians4 = Math.toRadians(90);
         double[][] result4 = trans.Rotation3DZ(vector4, angleInRadians4);
         System.out.println(result4[0][0]);
         System.out.println(result4[1][0]);
         System.out.println(result4[2][0]);
+
+        // CISALHAMENTO 2D
+        System.out.println("CISALHAMENTO 2D");
+        double[][] vector5 = {{1}, {2}};
+        double kx = 0.3;
+        double kz = 0.5;
+        double[][] result5 = trans.Shearing(vector5,kx,kz);
+        System.out.println(result5[0][0]);
+        System.out.println(result5[1][0]);
+
     }
 }

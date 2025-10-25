@@ -107,6 +107,34 @@ public class Transformations {
         };
         return vector3;
     }
+    public double[][] Shearing(double[][] vector, double kx, double ky) {
+        LinearAlgebra linearAlgebra = new LinearAlgebra();
+
+        // Converter o vetor para coordenadas homogêneas (3x1)
+        double[][] vector2 = {
+                {vector[0][0]},
+                {vector[1][0]},
+                {1}
+        };
+
+        // Matriz de cisalhamento 3x3
+        double[][] shearingMatrix = {
+                {1, kx, 0},
+                {ky, 1, 0},
+                {0, 0, 1}
+        };
+
+        // Aplicar o cisalhamento
+        double[][] result = linearAlgebra.dot(shearingMatrix, vector2);
+
+        // Converter de volta para coordenadas cartesianas (2x1)
+        double[][] vector3 = {
+                {result[0][0]},
+                {result[1][0]}
+        };
+
+        return vector3;
+    }
 }
 
 
