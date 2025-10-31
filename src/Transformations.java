@@ -1,6 +1,6 @@
 public class Transformations {
     // ========== DOUBLE[] VECTOR METHODS ==========
-    
+
     public double[] translate2D(double[] vector, double dx, double dy) {
         LinearAlgebra linearAlgebra = new LinearAlgebra();
         double[][] v = {
@@ -43,12 +43,6 @@ public class Transformations {
         return novo;
     }
 
-    public void mostrarVectorComoColuna(double[] vector){
-        if(vector == null) return;
-        for(int i=0; i<vector.length; i++){
-            System.out.println(vector[i]);
-        }
-    }
 
     public double[] reflection2DX(double[] vector) {
         LinearAlgebra linearAlgebra = new LinearAlgebra();
@@ -153,7 +147,7 @@ public class Transformations {
     }
 
     // ========== DOUBLE[][] VECTOR METHODS ==========
-    
+
     // Rotations
     public double[][] Rotation2D(double[][]vector, double angle) {
         LinearAlgebra linearAlgebra = new LinearAlgebra();
@@ -175,7 +169,7 @@ public class Transformations {
         };
         return vector3;
     }
-    
+
     public double[][] Rotation3DX(double[][] vector, double angle) {
         LinearAlgebra linearAlgebra = new LinearAlgebra();
 
@@ -205,7 +199,7 @@ public class Transformations {
 
         return vector3;
     }
-    
+
     public double[][] Rotation3DY(double[][] vector, double angle) {
         LinearAlgebra linearAlgebra = new LinearAlgebra();
 
@@ -233,7 +227,6 @@ public class Transformations {
 
         return vector3;
     }
-    
     public double[][] Rotation3DZ(double[][] vector, double angle) {
         LinearAlgebra linearAlgebra = new LinearAlgebra();
 
@@ -339,7 +332,7 @@ public class Transformations {
         };
         return vector3;
     }
-    
+
     public double [][]  Projection3DY(double[][] vector) {
         LinearAlgebra linearAlgebra = new LinearAlgebra();
         double [][] vector2 = {
@@ -365,7 +358,7 @@ public class Transformations {
         };
         return vector3;
     }
-    
+
     public double [][]  Projection3DZ(double[][] vector) {
         LinearAlgebra linearAlgebra = new LinearAlgebra();
         double [][] vector2 = {
