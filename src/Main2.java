@@ -1,54 +1,80 @@
-import java.sql.SQLOutput;
-
 public class Main2 {
     public static void main(String[] args) {
         Transformations trans = new Transformations();
+
         //ROTAÇÃO 2D
         System.out.println("ROTAÇÃO 2D");
-        double[][] vector = {{1}, {2}};
+        Vector vector = new Vector(2, new double[]{1, 2});
         double angleInRadians = Math.toRadians(90);
-        double[][] result = trans.Rotation2D(vector, angleInRadians);
-        System.out.println(result[0][0]);
-        System.out.println(result[1][0]);
+        Vector result = trans.Rotation2D(vector, angleInRadians);
+        result.mostrarVector();
         System.out.println();
-
 
         //ROTAÇÃO 3DX
         System.out.println("ROTAÇÃO 3DX");
-        double[][] vector2 = {{1}, {2}, {3}};
+        Vector vector2 = new Vector(3, new double[]{1, 2, 3});
         double angleInRadians2 = Math.toRadians(90);
-        double[][] result2 = trans.Rotation3DX(vector2, angleInRadians2);
-        System.out.println(result2[0][0]);
-        System.out.println(result2[1][0]);
-        System.out.println(result2[2][0]);
+        Vector result2 = trans.Rotation3DX(vector2, angleInRadians2);
+        result2.mostrarVector();
+        System.out.println();
 
         //ROTAÇÃO 3DY
-
         System.out.println("ROTAÇÃO 3DY");
-        double[][] vector3 = {{1}, {2}, {3}};
+        Vector vector3 = new Vector(3, new double[]{1, 2, 3});
         double angleInRadians3 = Math.toRadians(90);
-        double[][] result3 = trans.Rotation3DY(vector3, angleInRadians3);
-        System.out.println(result3[0][0]);
-        System.out.println(result3[1][0]);
-        System.out.println(result3[2][0]);
+        Vector result3 = trans.Rotation3DY(vector3, angleInRadians3);
+        result3.mostrarVector();
+        System.out.println();
 
         //ROTAÇÃO 3DZ
         System.out.println("ROTAÇÃO 3DZ");
-        double[][] vector4 = {{1}, {2}, {3}};
+        Vector vector4 = new Vector(3, new double[]{1, 2, 3});
         double angleInRadians4 = Math.toRadians(90);
-        double[][] result4 = trans.Rotation3DZ(vector4, angleInRadians4);
-        System.out.println(result4[0][0]);
-        System.out.println(result4[1][0]);
-        System.out.println(result4[2][0]);
+        Vector result4 = trans.Rotation3DZ(vector4, angleInRadians4);
+        result4.mostrarVector();
+        System.out.println();
 
         // CISALHAMENTO 2D
         System.out.println("CISALHAMENTO 2D");
-        double[][] vector5 = {{1}, {2}};
+        Vector vector5 = new Vector(2, new double[]{1, 2});
         double kx = 0.3;
         double kz = 0.5;
-        double[][] result5 = trans.Shearing(vector5,kx,kz);
-        System.out.println(result5[0][0]);
-        System.out.println(result5[1][0]);
+        Vector result5 = trans.Shearing(vector5, kx, kz);
+        result5.mostrarVector();
+        System.out.println();
+
+        // TRANSLAÇÃO 2D
+        System.out.println("TRANSLAÇÃO 2D");
+        Vector vector6 = new Vector(2, new double[]{1, 2});
+        double dx = 0.3;
+        double dy = 0.5;
+        Vector result6 = trans.translate2D(vector6, dx, dy);
+        result6.mostrarVector();
+        System.out.println();
+
+        // TRANSLAÇÃO 3D
+        System.out.println("TRANSLAÇÃO 3D");
+        Vector vector7 = new Vector(3, new double[]{1, 2, 3});
+        double dx1 = 0.3;
+        double dy1 = 0.5;
+        double dz1 = 0.6;
+        Vector result7 = trans.translate3D(vector7, dx1, dy1, dz1);
+        result7.mostrarVector();
+        System.out.println();
+
+        // REFLEXÃO 2D no eixo X
+        System.out.println("REFLEXÃO 2DX");
+        Vector vector8 = new Vector(2, new double[]{1, 2});
+        Vector result8 = trans.reflection2DX(vector8);
+        result8.mostrarVector();
+        System.out.println();
+
+        // REFLEXÃO 2D no eixo Y
+        System.out.println("REFLEXÃO 2DY");
+        Vector vector9 = new Vector(2, new double[]{1, 2});
+        Vector result9 = trans.reflection2DY(vector9);
+        result9.mostrarVector();
+        System.out.println();
 
         // TRANSLAÇÃO 2D
         System.out.println("TRANSLAÇÃO 2D");
