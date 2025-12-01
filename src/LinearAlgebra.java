@@ -272,25 +272,144 @@ public class LinearAlgebra {
         }
     }
 
-    public double[] times2(double[] vector, double[][] matrix) {
-        // Verificar se as dimensões são compatíveis
-        if (vector.length != matrix.length) {
-            System.out.println("Impossível: o tamanho do vetor deve ser igual ao número de linhas da matriz");
+    public double[] times2(double[][] matrix, double[] vector) {
+
+
+        if (vector.length != matrix[0].length) {
+            System.out.println("Impossível: tamanho do vetor deve ser igual ao número de COLUNAS da matriz");
             return null;
         }
 
-        double[] resultado = new double[matrix[0].length];
+        double[] resultado = new double[matrix.length];
 
-        for (int j = 0; j < matrix[0].length; j++) {
+        for (int i = 0; i < matrix.length; i++) {
             double soma = 0;
-            for (int i = 0; i < matrix.length; i++) {
-                soma += vector[i] * matrix[i][j];
+            for (int j = 0; j < matrix[0].length; j++) {
+                soma += matrix[i][j] * vector[j];
             }
+            resultado[i] = soma;
+        }
+
+        return resultado;
+    }
+
+
+    // AV3
+
+
+    public static double[] somarColunas(double[][] matriz) {
+        int colunas = matriz[0].length;
+        int linhas = matriz.length;
+
+        double[] resultado = new double[colunas];
+
+        for (int j = 0; j < colunas; j++) {
+            double soma = 0;
+
+            for (int i = 0; i < linhas; i++) {
+                soma += matriz[i][j];
+            }
+
             resultado[j] = soma;
         }
 
         return resultado;
     }
+
+    public double[] operacao(double[][] A) {
+        double TOL = 0.0001;
+        int n = A.length;
+        int iteracoes = 0;
+
+        double[] a0 = somarColunas(A);
+
+
+        double[] hn;
+        double[] an = new double[n];
+        double erro = 1;
+
+
+        while (erro > TOL) {
+
+
+            double[] u = times2(A, a0);
+            double r = norma(u);
+            hn = dividirVetor(u, r);
+
+
+            double[][] AT = transpose(A);
+            double[] v = times2(AT, hn);
+            double s = norma(v);
+            an = dividirVetor(v, s);
+
+
+            erro = 0;
+            for (int i = 0; i < n; i++) {
+                double diff = Math.abs(an[i] - a0[i]);
+                if (diff > erro) erro = diff;
+            }
+
+
+            for (int i = 0; i < n; i++) {
+                a0[i] = an[i];
+            }
+
+            iteracoes++;
+
+
+
+
+            if (erro <= TOL) {
+
+                break;
+            }
+        }
+
+        System.out.println("Quantidade de Iterações: " + iteracoes);
+        return an;
+    }
+
+
+    public void printVet(double[] v) {
+        for (int i = 0; i < v.length; i++) {
+            System.out.printf("%.6f\n", v[i]);
+        }
+        System.out.println();
+    }
+
+
+    public void ordemDecrescente(double[] v) {
+        for (int i = 0; i < v.length - 1; i++) {
+            int posMaior = i;
+            for (int j = i + 1; j < v.length; j++) {
+                if (v[j] > v[posMaior]) {
+                    posMaior = j;
+                }
+            }
+            double temp = v[i];
+            v[i] = v[posMaior];
+            v[posMaior] = temp;
+        }
+    }
+
+
+
+    public double norma(double[] valor) {
+        double soma = 0;
+        for (int i = 0; i < valor.length; i++) {
+            soma += valor[i] * valor[i];
+        }
+        return Math.sqrt(soma);
+    }
+
+
+    public double[] dividirVetor(double[] vetor, double escalar) {
+        double[] r = new double[vetor.length];
+        for (int i = 0; i < vetor.length; i++) {
+            r[i] = vetor[i] / escalar;
+        }
+        return r;
+}
 
 }
 
