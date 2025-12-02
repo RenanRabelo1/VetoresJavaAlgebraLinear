@@ -316,6 +316,37 @@ public class LinearAlgebra {
         return resultado;
     }
 
+    public double norma(double[] valor) {
+        double soma = 0;
+        for (int i = 0; i < valor.length; i++) {
+            soma += valor[i] * valor[i];
+        }
+        return Math.sqrt(soma);
+    }
+
+
+    public double[] dividirVetor(double[] vetor, double escalar) {
+        double[] r = new double[vetor.length];
+        for (int i = 0; i < vetor.length; i++) {
+            r[i] = vetor[i] / escalar;
+        }
+        return r;
+    }
+    
+    public void ordemDecrescente(double[] v) {
+        for (int i = 0; i < v.length - 1; i++) {
+            int posMaior = i;
+            for (int j = i + 1; j < v.length; j++) {
+                if (v[j] > v[posMaior]) {
+                    posMaior = j;
+                }
+            }
+            double temp = v[i];
+            v[i] = v[posMaior];
+            v[posMaior] = temp;
+        }
+    }
+
     public double[] operacao(double[][] A) {
         double TOL = 0.0001;
         int n = A.length;
@@ -377,39 +408,6 @@ public class LinearAlgebra {
         System.out.println();
     }
 
-
-    public void ordemDecrescente(double[] v) {
-        for (int i = 0; i < v.length - 1; i++) {
-            int posMaior = i;
-            for (int j = i + 1; j < v.length; j++) {
-                if (v[j] > v[posMaior]) {
-                    posMaior = j;
-                }
-            }
-            double temp = v[i];
-            v[i] = v[posMaior];
-            v[posMaior] = temp;
-        }
-    }
-
-
-
-    public double norma(double[] valor) {
-        double soma = 0;
-        for (int i = 0; i < valor.length; i++) {
-            soma += valor[i] * valor[i];
-        }
-        return Math.sqrt(soma);
-    }
-
-
-    public double[] dividirVetor(double[] vetor, double escalar) {
-        double[] r = new double[vetor.length];
-        for (int i = 0; i < vetor.length; i++) {
-            r[i] = vetor[i] / escalar;
-        }
-        return r;
-}
 
 }
 
