@@ -332,7 +332,7 @@ public class LinearAlgebra {
         }
         return r;
     }
-    
+
     public void ordemDecrescente(double[] v) {
         for (int i = 0; i < v.length - 1; i++) {
             int posMaior = i;
