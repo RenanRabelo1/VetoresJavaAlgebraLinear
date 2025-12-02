@@ -98,9 +98,7 @@ public class PageRankHits {
             vetor[i] = vetor[vetor.length - 1 - i];
             vetor[vetor.length - 1 - i] = temp;
         }
-
-        // Imprimir os resultados
-        System.out.println("Resultados para " + nomeMatriz);
+        
         for (int i = 0; i < vetor.length; i++) {
             // indices[i] é o índice original do site (começando de 0)
             // Adicionamos 1 para representar o site (Site 1, Site 2, ...)
